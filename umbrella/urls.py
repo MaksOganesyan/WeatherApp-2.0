@@ -20,7 +20,7 @@ from weather import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('blog/', include('weather.urls')),
-    path('', views.index, name='home'),  # Маршрут для пустого пути
+    path('admin/', admin.site.urls),
+    path('', include('weather.urls')),  # Направляем на urls.py приложения weather
     
 ]

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'weather/css/style.css' %}">
+    <title>Погода</title>
+    <script>
+        function getLocation() {
+            const params = new URLSearchParams(window.location.search);
+            if (params.has('lat') && params.has('lon')) return;
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(sendLocation);
+            } else {
+                alert("Геолокация не поддерживается этим браузером.");
+            }
+        }
+        function sendLocation(position) {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            const url = `/?lat=${lat}&lon=${lon}`;
+            window.location.href = url;
+        }
+        window.onload = getLocation;
+    </script>
+</head>
+<body>
+    <header class="header__home">
+        <h1 class="text weather__title">Возьми зонтик</h1>
+    </header>
+    <main>
+        <section class="weather">
+            <div class="weather__wrapper">
+                <div class="block__text">
+                    <p class="text black">Забудьте о неожиданном дожде! 
+                        Приложение "Возьми зонтик" использует данные о погоде, 
+                        чтобы своевременно предупредить вас о необходимости взять зонт.
+                    </p>
+                    <p class="text blue">Уведомления приходят утром, если в вашем городе идёт дождь.</p>
+                </div>
+                <div class="information">
+                    {% if weather.error %}
+                        <p>{{ weather.error }}</p>
+                    {% else %}
+                    <h2 class="text weather__city">{{ weather.name }}</h2>
+                    <p class="text weather__temperature">{{ weather.main.temp }}°C</p>
+                    <p class="text weather__wet">Влажность: {{ weather.main.humidity }}%</p>
+                    <p class="text weather__description">{{ weather.weather.0.description }}</p>
+                    {% if weather.wind %}
+                        <p class="text weather__speed">Скорость ветра: {{ weather.wind.speed }} м/с</p>
+                    {% endif %}
+                    
+                        {% if weather.rain_status > 0 %}
+                            <p class="text weather__rain">Дождь за последний час: {{ weather.rain_status }} мм</p>
+                        {% else %}
+                            <p class="text weather__rain">Дождя за последний час нет</p>
+                        {% endif %}
+                        {% if weather.snow_status > 0 %}
+                            <p class="text weather__snow">Снег за последний час: {{ weather.snow_status }} мм</p>
+                        {% endif %}
+                        <h2 class="text weather__message">{{ message }}</h2>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+        <section class="authorized__section">
+            <div class="authorized">
+                {% if user.is_authenticated %}
+                    <p class="text auth">Вы уже авторизованы.</p>
+                    <div>
+                        <a href="{% url 'logout' %}" class="text logout">Выход</a>
+                    </div>
+            </div>
+            {% else %}
+                <div>
+                    <a href="{% url 'register' %}" class="text">Регистрация</a> | 
+                    <a href="{% url 'login' %}" class="text">Вход</a>
+                </div>
+            {% endif %}
+        </section>   
+    </main>
+</body>
+</html>
