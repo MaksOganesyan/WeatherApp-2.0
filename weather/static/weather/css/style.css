@@ -189,7 +189,7 @@ h2 {
 .notification {
     margin: 1rem ;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     margin-top: 3rem;
 }
 
