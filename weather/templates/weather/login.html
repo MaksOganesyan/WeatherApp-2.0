@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Авторизация</title>
+    <link rel="stylesheet" href="{% static 'weather/css/log.css' %}">    
 </head>
+
 <body>
-    <header></header>
+    <header>
+        <div class="wrapper">
+            <h1>Возьми зонтик</h1> 
+            <picture>
+                <source media="(min-width: 390px)" srcset="{% static 'weather/images/umbrella.svg' %}">
+                <img src="{% static 'weather/images/umbrella.svg' %}" alt="иконка зонтика">
+            </picture>
+        </div>
+    </header>
     <main>
         <section>
-            <h1>Вход</h1>
+            <h2>Вход</h2>
             <form method="post">
                 {% csrf_token %}
                 {{ form.as_p }}

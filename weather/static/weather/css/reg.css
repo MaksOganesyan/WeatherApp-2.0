@@ -1,0 +1,133 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700&display=swap');
+
+:root {
+    font-size: 62.5%;
+    --main-font-color: #F5F5F5;
+    --ssecond-font-color:#000000;
+    --main-font-family:"Montserrat Alternates";
+    --main-font-weight:700;
+   
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /* outline: 4px solid red !important; */
+}
+
+main {
+    margin-bottom: 10rem;
+}
+body,
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    background-color: #E5F0FB;
+}
+
+ul,
+ol {
+    list-style-type: none;
+    text-decoration: none;
+}
+
+button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+header {
+    background-color: #759DC6;
+    font-weight: var(--main-font-weight);
+}
+
+header  .wrapper{
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+    font-family: var(--main-font-family),sans-serif;
+}
+
+
+h2 {
+    text-align: center;
+    margin: 1rem;
+    font-family: var(--main-font-family);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 3rem;
+
+
+}
+
+label {
+    display: block;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-family: var(--main-font-family);
+}
+
+form input {
+    background-color: #759DC6;
+    width: 29.5rem;
+    height: 4.8rem;
+    border: 0.5rem solid transparent;
+    border-radius: 2rem;
+    padding-left:1.4rem ;
+    font-size: 1.6rem;
+    
+}
+
+button {
+    text-decoration: none;
+    font-size: 1.6rem;
+    font-weight: var(--main-font-weight);
+    width: 24.2rem;
+    height: 4rem;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2rem;
+    border: 1px solid ;
+    cursor: pointer;
+}
+
+
+form p {
+    margin-bottom: 20px;
+}
+
+p {
+    margin-top: 2rem;
+    text-align: center;
+    font-family: var(--main-font-family);
+}
+
+ a {
+    border: 0.1rem solid black;
+    border-radius: 2rem;
+    color: black;
+    padding: 0.5rem 1rem  ;
+    margin-left: 1rem;
+}

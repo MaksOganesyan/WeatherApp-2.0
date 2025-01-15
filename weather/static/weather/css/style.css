@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700&display=swap');
+
+:root {
+    font-size: 62.5%;
+    --main-font-color: #F5F5F5;
+    --ssecond-font-color:#000000;
+    --main-font-family:"Montserrat Alternates";
+    --main-font-weight:700;
+   
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /* outline: 4px solid red !important; */
+}
+
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    background-color: #E5F0FB;
+}
+
+ul,
+ol {
+    list-style-type: none;
+    text-decoration: none;
+}
+
+button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    box-shadow: none;
+}
+
+header {
+    background-color: #759DC6;
+    font-weight: var(--main-font-weight);
+}
+
+.wrapper {
+    max-width: 390px;
+    margin: 0;
+    padding: 0;
+}
+
+header  .wrapper{
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+    font-family: var(--main-font-family),sans-serif;
+    padding: 1rem 0;
+}
+
+.hero {
+    font-family: var(--main-font-family),sans-serif;
+
+    
+    
+ }
+ 
+ h1 {
+     margin-left: 1rem;
+     font-size: 1.2rem;
+     white-space: pre-line;
+
+ }
+
+ .main-text {
+    white-space: pre-line;
+    font-size: 1.4rem;
+    font-weight: var(--main-font-weight);
+    margin-left: 10.6rem;
+    color: #0B437B;
+}
+
+.information {
+    text-align: center;
+    
+}
+
+.toggle-button-cover {
+    
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+.button {
+    position: relative;
+    width: 7.4rem;
+    height: 3.6rem;
+    overflow: hidden;
+}
+
+.checkbox {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+    position: absolute;
+    z-index: 3;
+}
+
+.knobs {
+    position: absolute;
+    top: 0.4rem;
+    left: 0.4rem;
+    width: 2.8rem;
+    height: 2.8rem;
+    background-color:#759DC6;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    line-height: 2.8rem;
+    transition: 0.3s ease all, left 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15);
+    z-index: 2;
+}
+
+.layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-radius: 1.8rem;
+    transition: 0.3s ease all;
+    z-index: 1;
+}
+
+.button.rounded .layer {
+    border-radius: 10rem;
+}
+
+.checkbox:active + .knobs {
+    width: 4.6rem;
+}
+
+.checkbox:checked:active + .knobs {
+    left: calc(100% - 4.6rem);
+}
+
+.checkbox:checked + .knobs {
+    left: calc(100% - 3.2rem);
+    background-color: white;
+    color: black;
+   
+}
+
+.checkbox:checked ~ .layer {
+    background-color: #759DC6;
+}
+
+.checkbox + .knobs::before {
+    content: "Onn";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.checkbox:checked + .knobs::before {
+    content: "Off";
+    
+}
+
+h2 {
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
+
+.notification {
+    margin: 1rem ;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+}
+
+span {
+    font-size: 1.6rem;
+    font-weight: var(--main-font-weight);
+    white-space: pre-line;
+}
+
+.reg-btn {
+    text-decoration: none;
+    font-size: 1.6rem;
+    font-weight: var(--main-font-weight);
+    width: 24.2rem;
+    height: 4rem;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2rem;
+    margin-top: 7.5rem;
+    border: 1px solid ;
+}
+
+.reg-menu {
+    display: flex;
+    gap: 9rem;
+    margin-top: 9rem;
+    margin-bottom: 10rem;
+    justify-content: center;
+    font-family: var(--main-font-family);
+    
+}
+
+.reg-menu a {
+    color: black;
+    font-size: 1.4rem;
+    font-weight: var(--main-font-weight);
+}
+
+.enter-btn {  
+    border: 0.1rem solid black;
+    border-radius: 2rem;
+    color: black;
+    padding: 0.5rem 1rem  ;
+}
+
+.weather__message {
+    margin-top: 3rem;
+}

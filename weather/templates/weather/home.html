@@ -17,41 +17,51 @@
                 alert("Геолокация не поддерживается этим браузером.");
             }
         }
+
         function sendLocation(position) {
             const lat = position.coords.latitude;
             const lon = position.coords.longitude;
             const url = `/?lat=${lat}&lon=${lon}`;
             window.location.href = url;
         }
-        window.onload = getLocation;
+
+        window.onload = function() {
+            getLocation();
+          
+        }
     </script>
 </head>
 <body>
-    <header class="header__home">
-        <h1 class="text weather__title">Возьми зонтик</h1>
+    <header>
+        <div class="wrapper">
+            <h1 class="text weather__title">Возьми зонтик</h1>
+            <picture>
+                <source media="(min-width: 390px)" srcset="{% static 'weather/images/umbrella.svg' %}">
+                <img src="{% static 'weather/images/umbrella.svg' %}" alt="иконка зонтика">
+            </picture>
+        </div>
     </header>
     <main>
-        <section class="weather">
-            <div class="weather__wrapper">
+        <section class="hero">
+            <div class="wrapper">
                 <div class="block__text">
-                    <p class="text black">Забудьте о неожиданном дожде! 
-                        Приложение "Возьми зонтик" использует данные о погоде, 
+                    <h2>Забудьте о неожиданном дожде! Приложение
+                        "Возьми зонтик" использует данные о погоде, 
                         чтобы своевременно предупредить вас о необходимости взять зонт.
-                    </p>
-                    <p class="text blue">Уведомления приходят утром, если в вашем городе идёт дождь.</p>
+                    </h2>
+                    <p class="main-text">Уведомления приходят утром, если в вашем городе идёт дождь. Вы можете легко отключить уведомления в настройках.</p>
                 </div>
                 <div class="information">
                     {% if weather.error %}
                         <p>{{ weather.error }}</p>
                     {% else %}
-                    <h2 class="text weather__city">{{ weather.name }}</h2>
-                    <p class="text weather__temperature">{{ weather.main.temp }}°C</p>
-                    <p class="text weather__wet">Влажность: {{ weather.main.humidity }}%</p>
-                    <p class="text weather__description">{{ weather.weather.0.description }}</p>
-                    {% if weather.wind %}
-                        <p class="text weather__speed">Скорость ветра: {{ weather.wind.speed }} м/с</p>
-                    {% endif %}
-                    
+                        <h2 class="text weather__city">{{ weather.name }}</h2>
+                        <p class="text weather__temperature">{{ weather.main.temp }}°C</p>
+                        <p class="text weather__wet">Влажность: {{ weather.main.humidity }}%</p>
+                        <p class="text weather__description">{{ weather.weather.0.description }}</p>
+                        {% if weather.wind %}
+                            <p class="text weather__speed">Скорость ветра: {{ weather.wind.speed }} м/с</p>
+                        {% endif %}
                         {% if weather.rain_status > 0 %}
                             <p class="text weather__rain">Дождь за последний час: {{ weather.rain_status }} мм</p>
                         {% else %}
@@ -64,7 +74,20 @@
                     {% endif %}
                 </div>
             </div>
+            <div class="notification">
+                <span>Напоминание о том,
+                    что нужно взять зонт:</span>
+                <div class="toggle-button-cover">
+                    <div class="button r">
+                        <input class="checkbox" type="checkbox">
+                        <div class="knobs"></div>
+                        <div class="layer"></div>
+
+                    </div>
+                </div>
+            </div>
         </section>
+
         <section class="authorized__section">
             <div class="authorized">
                 {% if user.is_authenticated %}
@@ -72,13 +95,14 @@
                     <div>
                         <a href="{% url 'logout' %}" class="text logout">Выход</a>
                     </div>
-            </div>
-            {% else %}
-                <div>
-                    <a href="{% url 'register' %}" class="text">Регистрация</a> | 
-                    <a href="{% url 'login' %}" class="text">Вход</a>
                 </div>
-            {% endif %}
+                {% else %}
+                    <ul class = "reg-menu">
+                        <li><a href="{% url 'register' %}">Регистрация</a></li>
+                        <li><a href="{% url 'login' %}" class="enter-btn">Вход</a></li>
+                        
+                        </ul>
+                {% endif %}
         </section>   
     </main>
 </body>
