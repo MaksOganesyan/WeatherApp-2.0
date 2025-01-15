@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная страница</title>
+</head>
+<body>
+    <header>
+        <h1>Добро пожаловать на наш сайт!</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Главная</a></li>
+                <li><a href="{% url 'register' %}">Регистрация</a></li>
+                <li><a href="{% url 'login' %}">Войти</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Погода сегодня</h2>
+        <p>На этой странице будет отображаться погода.</p>
+        <p><a href="{% url 'home' %}">Перейти на главную страницу</a></p>
+    </main>
+    <footer>
+        <p>&copy; 2025 Мой сайт</p>
+    </footer>
+</body>
+</html>
